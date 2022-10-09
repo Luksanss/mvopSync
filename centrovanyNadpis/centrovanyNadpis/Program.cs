@@ -20,14 +20,14 @@ class Program
         // force user to enter right height
         while (height == 0)
         {
-            height = GetHeight(height);
+            height = GetHeight();
         }
 
         int width = 0;
         // force user to enter the right width
         while (width == 0)
         {
-            width = GetWidth(dateNow.Length, nadpis.Length, width);
+            width = GetWidth(dateNow.Length, nadpis.Length);
         }
 
 
@@ -36,10 +36,10 @@ class Program
     }
 
 
-    public static int GetWidth(int dateSize, int nadpisSize, int width)
+    public static int GetWidth(int dateSize, int nadpisSize)
     {
         Console.Write("Sirka: ");
-        width = Convert.ToInt32(Console.ReadLine());
+        int width = Convert.ToInt32(Console.ReadLine());
 
         if (width < (dateSize + 2) || width < (nadpisSize + 2))
         {
@@ -52,10 +52,10 @@ class Program
         }
     }
 
-    public static int GetHeight(int height)
+    public static int GetHeight()
     {
         Console.Write("Vyska: ");
-        height = Convert.ToInt32(Console.ReadLine());
+        int height = Convert.ToInt32(Console.ReadLine());
 
         if (height < 3)
         {
