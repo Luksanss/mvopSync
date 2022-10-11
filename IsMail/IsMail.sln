@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsMail", "IsMail\IsMail.csproj", "{0AF04B59-9EF9-4833-9AE1-3655180D3E7C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AF04B59-9EF9-4833-9AE1-3655180D3E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF04B59-9EF9-4833-9AE1-3655180D3E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF04B59-9EF9-4833-9AE1-3655180D3E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF04B59-9EF9-4833-9AE1-3655180D3E7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B87E583-52AB-4366-A7ED-C2A693FA5210}
+	EndGlobalSection
+EndGlobal
