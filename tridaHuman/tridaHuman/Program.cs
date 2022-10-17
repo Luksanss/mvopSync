@@ -20,7 +20,7 @@ class Program
         Console.WriteLine(realStudent.Surname);
         Console.WriteLine(realStudent.Mark);
 
-        Worker realWorker = new("Deine", "Mutter", 200, 100);
+        Worker realWorker = new("Deine", "Mutter", 2010.2, 100.1);
 
         Console.WriteLine(realWorker.Mzda);
         Console.WriteLine(realWorker.OdpracovaneHodiny);
@@ -34,15 +34,15 @@ class Human
 {
     public Human(string name, string surname)
     {
-        this.name = name;
-        this.surname = surname;
+        this.Name = name;
+        this.Surname = surname;
     }
 
     private string name;
     public string Name
     {
         get { return this.name; }
-        set
+        private set
         {
             if (value == "")
             {
@@ -84,16 +84,14 @@ class Student : Human
 
     public Student(string name, string surname, int mark) : base(name, surname)
     {
-        this.Name = name;
-        this.Surname = surname;
         this.Mark = mark;
     }
 }
 
 class Worker : Human
 {
-    private int mzda;
-    public int Mzda
+    private double mzda;
+    public double Mzda
     {
         get { return mzda; }
         set
@@ -109,8 +107,8 @@ class Worker : Human
         }
     }
 
-    private int odpracovaneHodiny;
-    public int OdpracovaneHodiny
+    private double odpracovaneHodiny;
+    public double OdpracovaneHodiny
     {
         get { return odpracovaneHodiny; }
         set
@@ -126,16 +124,14 @@ class Worker : Human
         }
     }
 
-    public Worker(string name, string surname, int mzda, int odpracovaneHodiny) : base(name, surname)
+    public Worker(string name, string surname, double mzda, double odpracovaneHodiny) : base(name, surname)
     {
-        this.Name = name;
-        this.Surname = surname;
-        this.mzda = mzda;
-        this.odpracovaneHodiny = odpracovaneHodiny;
+        this.Mzda = mzda;
+        this.OdpracovaneHodiny = odpracovaneHodiny;
     }
 
-    public int HodinovaMzda()
+    public double HodinovaMzda()
     {
-        return this.Mzda * this.odpracovaneHodiny;
+        return this.Mzda * this.OdpracovaneHodiny;
     }
 }
