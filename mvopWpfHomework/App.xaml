@@ -1,7 +1,7 @@
-﻿<Application x:Class="mvopWpfHomework.App"
+﻿<Application x:Class="testifworks.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:mvopWpfHomework"
+             xmlns:local="clr-namespace:testifworks"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

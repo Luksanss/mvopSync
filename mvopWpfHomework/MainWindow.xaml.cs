@@ -53,10 +53,11 @@ namespace mvopWpfHomework
         }
     }
 
-    class Osoba 
+    class Osoba
     {
         string name;
-        public string Name {
+        public string Name
+        {
             get { return name; }
             set { name = value; }
         }
@@ -79,7 +80,7 @@ namespace mvopWpfHomework
     {
         string edDegree;
         public string EdDegree
-        { 
+        {
             get { return edDegree; }
             set { edDegree = value; }
         }
