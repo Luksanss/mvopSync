@@ -5,12 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="300" Width="200">
     <Grid>
-        <Button x:Name="result" Margin="232,139,232,162" Click="result_Click" FontSize="140">
-            <TextBlock Text="=" Margin="0,-55,0,0"/>
-        </Button>
-        <Label x:Name="printResult" Content="no result" HorizontalAlignment="Center" Margin="0,385,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="userInput" Margin="292,302,272,83" ></TextBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Content="3" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="5" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="4" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="6" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="8" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="7" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="9" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="0" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="2" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="1" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <!-- Numbers only above -->
+
+        <Button Content="=" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="result_Click"/>
+        <Button Content="-" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="+" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="*" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="/" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="." Grid.Column="2" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Button_Click"/>
+        <Button Content="C" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="30" Height="30" Margin="0,4,0,0" Click="Clear_Text"/>
+        <TextBox x:Name="printResult" Grid.ColumnSpan="5" Grid.RowSpan="3" Margin="10" Text="2.15+3*4/2" TextWrapping="Wrap"
+                 VerticalAlignment="Center" Width="176" PreviewTextInput ="PreviewTextInput" FontSize="20"/>
+
+        <!-- Above only Buttons -->
+
+
+
+
+
+
     </Grid>
 </Window>

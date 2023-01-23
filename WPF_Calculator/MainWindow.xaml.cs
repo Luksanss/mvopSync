@@ -12,9 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-        
-
+using System.Data;
 
 namespace WPF_Calculator
 {
@@ -29,22 +27,81 @@ namespace WPF_Calculator
         {
             InitializeComponent();
         }
+        public static double Evaluate(string expression) => Convert.ToDouble(new DataTable().Compute(expression, ""));
+
+        
+        private bool godChecker(string charToCheck)
+        {
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"[0-9]");
+            string temp;
+            string[] allowedSymbols = { "/", "*", "-", "+", "." };
+
+
+            if (!regex.IsMatch(charToCheck))
+            {
+                if (allowedSymbols.Contains(Convert.ToString(printResult.Text[printResult.Text.Length - 1])) && allowedSymbols.Contains(charToCheck))
+                {
+                    return true;
+                }
+                else
+                {
+                    foreach (var syumbol in charToCheck)
+                    {
+                        temp = Convert.ToString(syumbol);
+                        if (allowedSymbols.Contains(temp))
+                        {
+                            return false;
+                        }
+                        temp = Convert.ToString(syumbol);
+                        if (!allowedSymbols.Contains(temp))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = godChecker(e.Text);
+        }
 
         private void result_Click(object sender, RoutedEventArgs e)
         {
-            printResult.Content = Calc.MainCalc(userInput.Text);
+            // printResult.Text = Calc.MainCalc(printResult.Text);
+            printResult.Text = Convert.ToString(Evaluate(printResult.Text)).Replace(',', '.');
         }
 
+        private void InputBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string charToCheck = (e.Source as Button).Content.ToString();
+            if (!godChecker(charToCheck))
+            {
+                printResult.Text += charToCheck;
+            }
+        }
+
+        private void Clear_Text(object sender, RoutedEventArgs e)
+        {
+            printResult.Text = "";
+        }
     }
     class Calc
     {
-        public static double MainCalc(string arg)
+        public static string MainCalc(string arg)
         {
             List<double> nums;
             List<char> operators;
 
             (nums, operators) = GetValues(arg);
-            return Calculate(nums, operators);
+            return Convert.ToString(Calculate(nums, operators));
             //Console.ReadKey();
         }
 
