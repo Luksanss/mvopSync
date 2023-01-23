@@ -70,7 +70,13 @@ namespace WPF_Calculator
         private void result_Click(object sender, RoutedEventArgs e)
         {
             // printResult.Text = Calc.MainCalc(printResult.Text);
-            printResult.Text = Convert.ToString(Evaluate(printResult.Text)).Replace(',', '.');
+            string[] allowedSymbols = { "/", "*", "-", "+", "." };
+            string ff = Convert.ToString(printResult.Text[printResult.Text.Length - 1]);
+            if (!allowedSymbols.Contains(ff))
+            {
+                printResult.Text = Convert.ToString(Evaluate(printResult.Text)).Replace(',', '.');
+            }
+
         }
 
         private void InputBox_TextChanged(object sender, TextChangedEventArgs e)
