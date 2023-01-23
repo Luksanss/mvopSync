@@ -28,7 +28,6 @@ namespace WPF_Calculator
             InitializeComponent();
         }
         public static double Evaluate(string expression) => Convert.ToDouble(new DataTable().Compute(expression, ""));
-
         
         private bool godChecker(string charToCheck)
         {
@@ -37,7 +36,7 @@ namespace WPF_Calculator
             string[] allowedSymbols = { "/", "*", "-", "+", "." };
 
 
-            if (!regex.IsMatch(charToCheck))
+            if (!regex.IsMatch(charToCheck) && printResult.Text.Length > 1)
             {
                 if (allowedSymbols.Contains(Convert.ToString(printResult.Text[printResult.Text.Length - 1])) && allowedSymbols.Contains(charToCheck))
                 {
@@ -90,7 +89,7 @@ namespace WPF_Calculator
 
         private void Clear_Text(object sender, RoutedEventArgs e)
         {
-            printResult.Text = "";
+            printResult.Text = string.Empty;
         }
     }
     class Calc
