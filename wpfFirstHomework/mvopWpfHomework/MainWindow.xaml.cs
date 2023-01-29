@@ -48,6 +48,11 @@ namespace mvopWpfHomework
                 LabelEmploee.Content = "Missing some information...";
             }
         }
+        private void PrintToLabelPreview(Zamestnanec newZm)
+        {
+            // e.Text = "content"
+              LabelEmploee.Content = newZm.ToString();
+        }
 
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
@@ -187,6 +192,57 @@ namespace mvopWpfHomework
                 values.Clear();
             }
             displayData.ItemsSource = listOfPeople;
+        }
+
+        private void TextBoxName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var newZm = zm;
+            newZm.Name = TextBoxName.Text;
+            PrintToLabelPreview(newZm);
+        }
+
+        private void TextBoxSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var newZm = zm;
+            newZm.Surname = TextBoxSurname.Text;
+            PrintToLabelPreview(newZm);
+        }
+
+        private void TextBoxSalary_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var newZm = zm;
+            var success = double.TryParse(TextBoxSalary.Text, out _);
+            if (success)
+            {
+                newZm.Salary = double.Parse(TextBoxSalary.Text);
+                PrintToLabelPreview(newZm);
+            }
+            else
+            {
+                TextBoxSalary_LostFocus(sender, e);
+            }
+
+        }
+
+        private void TextBoxTitle_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var newZm = zm;
+            newZm.WorkOccupation = TextBoxTitle.Text;
+            PrintToLabelPreview(newZm);
+        }
+
+        private void CmBoxEdu_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var newZm = zm;
+            newZm.EdDegree = CmBoxEdu.Text;
+            PrintToLabelPreview(newZm);
+        }
+
+        private void DatePicker_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var newZm = zm;
+            newZm.DateOfBirth = DateTime.Parse(DatePicker.Text);
+            PrintToLabelPreview(newZm);
         }
     }
 
