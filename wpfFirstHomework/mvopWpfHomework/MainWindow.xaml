@@ -5,28 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mvopWpfHomework"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900 " Width="1600">
+        Title="MainWindow" Height="1200" Width="1900">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="110,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text = "{Binding Name, Mode = TwoWay}"/>
-        <TextBox HorizontalAlignment="Left" Margin="110,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19" Text = "{Binding Surname, Mode = TwoWay}"/>
-        <DatePicker HorizontalAlignment="Left" Margin="110,60,0,0" VerticalAlignment="Top" Width="120" Height="26" SelectedDate="{Binding DateOfBirth, Mode = TwoWay}" />
-        <TextBox HorizontalAlignment="Left" Margin="110,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19" Text = "{Binding Salary, Mode = TwoWay}"/>
-        <TextBox HorizontalAlignment="Left" Margin="110,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="19" Text = "{Binding WorkOccupation, Mode = TwoWay}"/>
-        <ComboBox x:Name="CmBoxEdu" HorizontalAlignment="Left" Margin="110,142,0,0" VerticalAlignment="Top" Width="120" Text="{Binding EdDegree, Mode = TwoWay}">
-            <ComboBoxItem IsSelected="True" Content="none"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Grid.Column ="1" Grid.Row="0" Grid.ColumnSpan="2" TextWrapping="Wrap"
+                 VerticalAlignment="Center"  Width="360" Height="50" FontSize="28" Text = "{Binding Name, Mode = TwoWay}" LostFocus="TextBoxName_LostFocus"/>
+        <Label x:Name="NameLabel" Content=""  HorizontalAlignment="Left" Grid.Column="3" Grid.Row="0" Height="50" Width="360" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="20"/>
+        
+        <TextBox x:Name="TextBoxSurname" HorizontalAlignment="Left" Grid.Column ="1" Grid.Row="1" Grid.ColumnSpan="2" TextWrapping="Wrap"
+                 VerticalAlignment="Center"  Width="360" Height="50" FontSize="28" Text = "{Binding Surname, Mode = TwoWay}" LostFocus="TextBoxSurname_LostFocus"/>
+        <Label x:Name="SurnameLabel" Content=""  HorizontalAlignment="Left" Grid.Column="3" Grid.Row="1" Height="50" Width="360" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="20"/>
+
+        <DatePicker x:Name="DatePicker" HorizontalAlignment="Left" Grid.Column ="1" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center"  Width="360" Height="50" FontSize="28" Text = "{Binding DateOfBirth, Mode = TwoWay}"/>
+        
+        <TextBox x:Name="TextBoxSalary" HorizontalAlignment="Left" Grid.Column ="1" Grid.Row="3" Grid.ColumnSpan="2" TextWrapping="Wrap"
+                 VerticalAlignment="Center"  Width="360" Height="50" FontSize="28" Text = "{Binding Salary, Mode = TwoWay}" LostFocus="TextBoxSalary_LostFocus"/>
+        <Label x:Name="SalaryLabel" Content=""  HorizontalAlignment="Left" Grid.Column="3" Grid.Row="3" Height="50" Width="360" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="20"/>
+        
+        <TextBox x:Name="TextBoxTitle" HorizontalAlignment="Left" Grid.Column ="1" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="Wrap"
+                 VerticalAlignment="Center"  Width="360" Height="50" FontSize="28" Text = "{Binding WorkOccupation, Mode = TwoWay}" LostFocus="TextBoxTitle_LostFocus"/>
+        <Label x:Name="TitleLabel" Content=""  HorizontalAlignment="Left" Grid.Column="3" Grid.Row="4" Height="50" Width="360" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="20"/>
+
+        <ComboBox x:Name="CmBoxEdu" HorizontalAlignment="Left" Grid.Column ="1" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center"  Width="360" Height="50" FontSize="28" Text = "{Binding EdDegree, Mode = TwoWay}">
+            <ComboBoxItem IsSelected="True" Content="No Education"/>
             <ComboBoxItem Content="Elementary school"/>
             <ComboBoxItem Content="High School"/>
             <ComboBoxItem Content="University"/>
         </ComboBox>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Surname*" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top"/>
-        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
-        <Label Content="Salary*" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"/>
-        <Label Content="Job occupation*" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top"/>
-        <Label Content="Education" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="PrintToLabelButton" Content="Print" HorizontalAlignment="Left" Margin="110,206,0,0" VerticalAlignment="Top" Height="26" Width="120" Click="PrintToLabel"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="110,237,0,0" VerticalAlignment="Top" Height="26" Width="120" Click="ButtonSave_OnClick"/>
-        <Label x:Name="LabelEmploee" Content="Label" HorizontalAlignment="Left" Margin="11,300,0,0" VerticalAlignment="Top"/>
+
+        
+        <Label Content="Name" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Width="180" FontSize="28"/>
+        <Label Content="Surname*" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Width="180" FontSize="28"/>
+        <Label Content="Date of birth" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="180" FontSize="28"/>
+        <Label Content="Salary*" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Width="180" FontSize="28"/>
+        <Label Content="Job title*" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Width="180" FontSize="28"/>
+        <Label Content="Education" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Width="180" FontSize="28"/>
+
+        <Button x:Name="PrintToLabelButton" Content="Print" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Height="50" Width="360" Click="PrintToLabel" FontSize="28"/>
+        <Button Content="Save" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="50" Width="360" Click="ButtonSave_OnClick" FontSize="28"/>
+        <Label x:Name="LabelEmploee" Content=""  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="3" Height="300" Width="550" VerticalAlignment="Center" FontSize="28"/>
+
+        <ListView Name="displayData" Grid.Column="4" Grid.ColumnSpan="6" Grid.RowSpan="9" FontSize="28" Width="1020">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="170" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Surname" Width="170" DisplayMemberBinding="{Binding Surname}" />
+                    <GridViewColumn Header="Born" Width="170" DisplayMemberBinding="{Binding DateOfBirth}" />
+                    <GridViewColumn Header="Salary" Width="170" DisplayMemberBinding="{Binding Salary}" />
+                    <GridViewColumn Header="Title" Width="170" DisplayMemberBinding="{Binding WorkOccupation}" />
+                    <GridViewColumn Header="Educ." Width="170" DisplayMemberBinding="{Binding EdDegree}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="saveButton" Content="Save" Grid.Column="8" Grid.Row="9" Click="ButtonSave_OnClick" FontSize="28"/>
 
     </Grid>
 </Window>
