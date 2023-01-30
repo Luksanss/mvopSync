@@ -83,7 +83,7 @@ namespace mvopWpfHomework
             bool resetValue = false;
             foreach (var c in TextBoxSurname.Text)
             {
-                if (!char.IsLetter(c))
+                if (!char.IsLetter(c) && c != ' ')
                 {
                     TextBoxSurname.BorderBrush = redErrorbrush;
                     resetValue = true;
@@ -107,7 +107,7 @@ namespace mvopWpfHomework
             bool resetValue = false;
             foreach (var c in TextBoxSalary.Text)
             {
-                if (!char.IsDigit(c))
+                if (!char.IsDigit(c) && c != ' ')
                 {
                     TextBoxSalary.BorderBrush = redErrorbrush;
                     resetValue = true;
@@ -131,7 +131,7 @@ namespace mvopWpfHomework
             bool resetValue = false;
             foreach (var c in TextBoxTitle.Text)
             {
-                if (!char.IsLetter(c))
+                if (!char.IsLetter(c) && c != ' ')
                 {
                     TextBoxTitle.BorderBrush = redErrorbrush;
                     resetValue = true;
@@ -155,7 +155,7 @@ namespace mvopWpfHomework
             bool resetValue = false;
             foreach (var c in TextBoxName.Text)
             {
-                if (!char.IsLetter(c))
+                if (!char.IsLetter(c) && c != ' ')
                 {
                     TextBoxName.BorderBrush = redErrorbrush;
                     resetValue = true;
