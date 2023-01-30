@@ -107,7 +107,7 @@ namespace mvopWpfHomework
             bool resetValue = false;
             foreach (var c in TextBoxSalary.Text)
             {
-                if (!char.IsDigit(c) && c != ' ')
+                if (!char.IsDigit(c))
                 {
                     TextBoxSalary.BorderBrush = redErrorbrush;
                     resetValue = true;
