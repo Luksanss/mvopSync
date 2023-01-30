@@ -30,7 +30,9 @@ namespace mvopWpfHomework
      */
     public partial class MainWindow : Window
     {
+        SolidColorBrush redErrorbrush = Brushes.Red;
         Zamestnanec zm;
+     
         public MainWindow()
         {
             InitializeComponent();
@@ -83,7 +85,7 @@ namespace mvopWpfHomework
             {
                 if (!char.IsLetter(c))
                 {
-                    TextBoxSurname.BorderBrush = Brushes.Red;
+                    TextBoxSurname.BorderBrush = redErrorbrush;
                     resetValue = true;
                     break;
                 }
@@ -107,7 +109,7 @@ namespace mvopWpfHomework
             {
                 if (!char.IsDigit(c))
                 {
-                    TextBoxSalary.BorderBrush = Brushes.Red;
+                    TextBoxSalary.BorderBrush = redErrorbrush;
                     resetValue = true;
                     break;
                 }
@@ -131,7 +133,7 @@ namespace mvopWpfHomework
             {
                 if (!char.IsLetter(c))
                 {
-                    TextBoxTitle.BorderBrush = Brushes.Red;
+                    TextBoxTitle.BorderBrush = redErrorbrush;
                     resetValue = true;
                     break;
                 }
@@ -155,7 +157,7 @@ namespace mvopWpfHomework
             {
                 if (!char.IsLetter(c))
                 {
-                    TextBoxName.BorderBrush = Brushes.Red;
+                    TextBoxName.BorderBrush = redErrorbrush;
                     resetValue = true;
                     break;
                 }
@@ -174,12 +176,21 @@ namespace mvopWpfHomework
 
         private void LoadDataFromFile()
         {
-            List<Zamestnanec> listOfPeople = new();
+            List<Zamestnanec> listOfPeople = new List<Zamestnanec>();
 
             // code to load data from file into records list
-            List<string> values = new();
+            List<string> values = new List<string>();
             string Path = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\dataEmployes.txt";
+            try
+            {
+                string[] linesTest = System.IO.File.ReadAllLines(Path);
+            }
+            catch
+            {
+                using (StreamWriter w = File.AppendText(Path)) ;
+            }
             string[] lines = System.IO.File.ReadAllLines(Path);
+
             foreach (string line in lines)
             {
                 var selectCategory = line.Split(",");
@@ -241,8 +252,39 @@ namespace mvopWpfHomework
         private void DatePicker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var newZm = zm;
-            newZm.DateOfBirth = DateTime.Parse(DatePicker.Text);
+            try
+            {
+                newZm.DateOfBirth = DateTime.Parse(DatePicker.Text);
+            }
+            catch
+            {
+                
+            }
             PrintToLabelPreview(newZm);
+        }
+
+        private void DatePicker_LostFocus(object sender, RoutedEventArgs e)
+        {
+            bool resetValue = false;
+            foreach (var c in DatePicker.Text)
+            {
+                if (!char.IsDigit(c) && c != '.')
+                {
+                    DatePicker.BorderBrush = redErrorbrush;
+                    resetValue = true;
+                    break;
+                }
+            }
+            if (resetValue)
+            {
+                DatePicker.Text = DateTime.Now.ToShortDateString();
+                DateLabel.Content = "use only numbers and dot!";
+            }
+            else
+            {
+                DatePicker.BorderBrush = Brushes.Black;
+                DateLabel.Content = String.Empty;
+            }
         }
     }
 
@@ -301,7 +343,7 @@ namespace mvopWpfHomework
 
         public bool isFilled()
         {
-            return this.Name != null && this.Surname != null && this.Salary != 0d && this.WorkOccupation != null && this.EdDegree != null;
+            return this.Name != null && this.Surname != null && this.Salary != 0d && this.WorkOccupation != null && this.EdDegree != null && this.Name != String.Empty && this.Surname != String.Empty && this.Salary != 0 && this.WorkOccupation != String.Empty && this.EdDegree != String.Empty;
         }
     }
 }
