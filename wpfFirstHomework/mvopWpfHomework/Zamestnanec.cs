@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace mvopWpfHomework
 {
@@ -55,10 +56,17 @@ namespace mvopWpfHomework
         {
             return $"Name: {Name}, Surname: {Surname}, Born: {DateOfBirth.ToShortDateString()}, Degree: {edDegree}, Working as: {workOccupation}, salary: {salary}";
         }
-
-        public bool isFilled()
+        public Guid ID
         {
-            return this.Name != null && this.Surname != null && this.Salary != 0d && this.WorkOccupation != null && this.EdDegree != null && this.Name != String.Empty && this.Surname != String.Empty && this.Salary != 0 && this.WorkOccupation != String.Empty && this.EdDegree != String.Empty;
+            get;
+            set;
+        }
+
+        // save all ZamestnanciList for listView
+        public static List<Zamestnanec> ZamestnanciList { get; set; } = new List<Zamestnanec>();
+        public static bool isFilled(Zamestnanec zam)
+        {
+            return zam.Name != null && zam.Surname != null && zam.Salary != 0d && zam.WorkOccupation != null && zam.EdDegree != null && zam.Name != String.Empty && zam.Surname != String.Empty && zam.Salary != 0 && zam.WorkOccupation != String.Empty && zam.EdDegree != String.Empty;
         }
     }
 }

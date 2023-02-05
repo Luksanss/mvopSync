@@ -41,7 +41,7 @@ namespace mvopWpfHomework
         }
         private void PrintToLabel(object sender, RoutedEventArgs e)
         {
-            if (zm.isFilled())
+            if (Zamestnanec.isFilled(zm))
             {
                 LabelEmploee.Content = zm.ToString();
             }
@@ -62,7 +62,7 @@ namespace mvopWpfHomework
             string Path = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\dataEmployes.txt";
             using (StreamWriter sw = File.AppendText(Path))
             {
-                if (zm.isFilled())
+                if (Zamestnanec.isFilled(zm))
                 {
                     sw.WriteLine(zm.ToStringSave());
                     saveSuccess = true;
@@ -76,6 +76,11 @@ namespace mvopWpfHomework
             {
                 LoadDataFromFile();
             }
+
+            // save to employee list
+            Zamestnanec.ZamestnanciList.Add(zm);
+            displayData.ItemsSource = Zamestnanec.ZamestnanciList;
+            LoadDataFromFile();
         }
 
         private void TextBoxSurname_LostFocus(object sender, RoutedEventArgs e)
@@ -176,7 +181,7 @@ namespace mvopWpfHomework
 
         private void LoadDataFromFile()
         {
-            List<Zamestnanec> listOfPeople = new List<Zamestnanec>();
+            List<Zamestnanec> list = new List<Zamestnanec>();
 
             // code to load data from file into records list
             List<string> values = new List<string>();
@@ -187,7 +192,7 @@ namespace mvopWpfHomework
             }
             catch
             {
-                using (StreamWriter w = File.AppendText(Path)) ;
+                using (StreamWriter w = File.AppendText(Path));
             }
             string[] lines = System.IO.File.ReadAllLines(Path);
 
@@ -199,10 +204,10 @@ namespace mvopWpfHomework
                     var selectValue = category.Split(": ");
                     values.Add(selectValue[1]);
                 }
-                listOfPeople.Add(new Zamestnanec { Name = values[0], Surname = values[1], DateOfBirth = DateTime.Parse(values[2]), EdDegree = values[3], WorkOccupation = values[4], Salary = double.Parse(values[5]) });
+                list.Add(new Zamestnanec { Name = values[0], Surname = values[1], DateOfBirth = DateTime.Parse(values[2]), EdDegree = values[3], WorkOccupation = values[4], Salary = double.Parse(values[5]) });
                 values.Clear();
             }
-            displayData.ItemsSource = listOfPeople;
+            displayData.ItemsSource = list;
         }
 
         private void TextBoxName_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -285,6 +290,35 @@ namespace mvopWpfHomework
                 DatePicker.BorderBrush = Brushes.Black;
                 DateLabel.Content = String.Empty;
             }
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            // set zm to values of selected user
+            
+            if (Zamestnanec.isFilled(displayData.SelectedItem as Zamestnanec))
+            {
+                zm.Name = (displayData.SelectedItem as Zamestnanec).Name;
+                zm.Surname = (displayData.SelectedItem as Zamestnanec).Surname;
+                zm.DateOfBirth = (displayData.SelectedItem as Zamestnanec).DateOfBirth;
+                zm.EdDegree = (displayData.SelectedItem as Zamestnanec).EdDegree;
+                zm.WorkOccupation = (displayData.SelectedItem as Zamestnanec).WorkOccupation;
+                zm.Salary = (displayData.SelectedItem as Zamestnanec).Salary; ;
+                zm.ID = (displayData.SelectedItem as Zamestnanec).ID;
+
+                // display all changes in GUI
+                DatePicker.Text = zm.DateOfBirth.ToShortDateString();
+                TextBoxName.Text = zm.Name;
+                TextBoxSurname.Text = zm.Surname;
+                TextBoxTitle.Text = zm.WorkOccupation;
+                TextBoxSalary.Text = zm.Salary.ToString();
+                CmBoxEdu.Text = zm.EdDegree;
+            }
+            else
+            {
+                LabelEmploee.Content = "invalid user";
+            }
+            LoadDataFromFile();
         }
     }
 }

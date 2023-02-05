@@ -70,19 +70,39 @@
 
         <Button x:Name="PrintToLabelButton" Content="Print" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Height="50" Width="360" Click="PrintToLabel" FontSize="28"/>
         <Button Content="Save" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="50" Width="360" Click="ButtonSave_OnClick" FontSize="28"/>
-        <Label x:Name="LabelEmploee" Content=""  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="3" Height="300" Width="550" VerticalAlignment="Center" FontSize="28"/>
+        <Button x:Name="ButtonEdit" Content="Edit Selected" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Left" Height="50" Width="360"   Click="ButtonEdit_Click" FontSize="28"/>
+        <Label x:Name="LabelEmploee" Content=""  HorizontalAlignment="Center" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="3" Grid.RowSpan="2" Height="200" Width="550" VerticalAlignment="Bottom" FontSize="28"/>
 
-        <ListView Name="displayData" Grid.Column="4" Grid.ColumnSpan="6" Grid.RowSpan="9" FontSize="28" Width="1020">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" Width="170" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Surname" Width="170" DisplayMemberBinding="{Binding Surname}" />
-                    <GridViewColumn Header="Born" Width="170" DisplayMemberBinding="{Binding DateOfBirth}" />
-                    <GridViewColumn Header="Salary" Width="170" DisplayMemberBinding="{Binding Salary}" />
-                    <GridViewColumn Header="Title" Width="170" DisplayMemberBinding="{Binding WorkOccupation}" />
-                    <GridViewColumn Header="Educ." Width="170" DisplayMemberBinding="{Binding EdDegree}" />
-                </GridView>
-            </ListView.View>
+        <ListView x:Name="displayData" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="6" Grid.RowSpan="9"  ItemsSource="{Binding ZamestnanciList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Name"/>
+                                    <Binding Path="Surname"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Grid.Column="1">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{} | {0} {1} {2} {3}">
+                                    <Binding Path="DateOfBirth" StringFormat="d. MMMM yyyy"/>
+                                    <Binding Path="EdDegree"/>
+                                    <Binding Path="WorkOccupation"/>
+                                    <Binding Path="Salary"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
     </Grid>
