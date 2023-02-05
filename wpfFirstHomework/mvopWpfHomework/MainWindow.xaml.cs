@@ -78,7 +78,15 @@ namespace mvopWpfHomework
             }
 
             // save to employee list
-            Zamestnanec.ZamestnanciList.Add(zm);
+            Zamestnanec.ZamestnanciList.Add(new Zamestnanec() {
+                    Name = zm.Name,
+                    Surname = zm.Surname,
+                    DateOfBirth = zm.DateOfBirth,
+                    EdDegree = zm.EdDegree,
+                    WorkOccupation = zm.WorkOccupation,
+                    Salary = zm.Salary,
+                    ID = Guid.NewGuid(),
+            });
             displayData.ItemsSource = Zamestnanec.ZamestnanciList;
             LoadDataFromFile();
         }
@@ -318,7 +326,7 @@ namespace mvopWpfHomework
             {
                 LabelEmploee.Content = "invalid user";
             }
-            LoadDataFromFile();
+
         }
     }
 }
