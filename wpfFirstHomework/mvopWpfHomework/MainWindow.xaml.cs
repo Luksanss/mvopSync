@@ -58,6 +58,16 @@ namespace mvopWpfHomework
 
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
+            var copy = new Zamestnanec()
+            {
+                Name = zm.Name,
+                Surname = zm.Surname,
+                DateOfBirth = zm.DateOfBirth,
+                EdDegree = zm.EdDegree,
+                WorkOccupation = zm.WorkOccupation,
+                Salary = zm.Salary,
+                ID = Guid.NewGuid(),
+            };
             bool saveSuccess = false;
             string Path = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\dataEmployes.txt";
             using (StreamWriter sw = File.AppendText(Path))
@@ -78,15 +88,7 @@ namespace mvopWpfHomework
             }
 
             // save to employee list
-            Zamestnanec.ZamestnanciList.Add(new Zamestnanec() {
-                    Name = zm.Name,
-                    Surname = zm.Surname,
-                    DateOfBirth = zm.DateOfBirth,
-                    EdDegree = zm.EdDegree,
-                    WorkOccupation = zm.WorkOccupation,
-                    Salary = zm.Salary,
-                    ID = Guid.NewGuid(),
-            });
+            Zamestnanec.ZamestnanciList.Add(copy);
             displayData.ItemsSource = Zamestnanec.ZamestnanciList;
             LoadDataFromFile();
         }
