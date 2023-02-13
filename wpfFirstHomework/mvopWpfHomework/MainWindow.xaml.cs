@@ -58,6 +58,14 @@ namespace mvopWpfHomework
 
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
+            foreach (var osoba in Zamestnanec.ZamestnanciList)
+            {
+                if (osoba.ID == zm.ID)
+                {
+                    Console.WriteLine("duplicate");
+                }
+            }
+
             var copy = new Zamestnanec()
             {
                 Name = zm.Name,
@@ -191,6 +199,7 @@ namespace mvopWpfHomework
 
         private void LoadDataFromFile()
         {
+
             List<Zamestnanec> list = new List<Zamestnanec>();
 
             // code to load data from file into records list
@@ -202,7 +211,7 @@ namespace mvopWpfHomework
             }
             catch
             {
-                using (StreamWriter w = File.AppendText(Path));
+                using (StreamWriter w = File.AppendText(Path)) ;
             }
             string[] lines = System.IO.File.ReadAllLines(Path);
 
@@ -215,6 +224,7 @@ namespace mvopWpfHomework
                     values.Add(selectValue[1]);
                 }
                 list.Add(new Zamestnanec { Name = values[0], Surname = values[1], DateOfBirth = DateTime.Parse(values[2]), EdDegree = values[3], WorkOccupation = values[4], Salary = double.Parse(values[5]) });
+                Zamestnanec.ZamestnanciList.Add(new Zamestnanec { Name = values[0], Surname = values[1], DateOfBirth = DateTime.Parse(values[2]), EdDegree = values[3], WorkOccupation = values[4], Salary = double.Parse(values[5]), ID = Guid.NewGuid() });
                 values.Clear();
             }
             displayData.ItemsSource = list;
@@ -305,7 +315,7 @@ namespace mvopWpfHomework
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             // set zm to values of selected user
-            
+
             if (Zamestnanec.isFilled(displayData.SelectedItem as Zamestnanec))
             {
                 zm.Name = (displayData.SelectedItem as Zamestnanec).Name;
