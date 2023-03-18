@@ -32,7 +32,7 @@
 - Aplikace bude mít jednoduchý a přehledný design, který bude uživateli příjemný
 - Aplikace bude mít jednoduché a intuitivní ovládání
     - bude mít co nejmenší počet tlačítek a co nejméně textu
-- tady je přibližné rozvržení aplikace: [Rozvržení aplikace](MG_0904.HEIC)
+- tady je přibližné rozvržení aplikace: [Rozvržení aplikace](IMG_0904.HEIC)
     - jak je na obrázku vidět aplikace má pár tlačítek, které jsou vždy vidět
     - toto bude jediné rozhraní aplikace - aplikace nebude otevírat další okna
 
@@ -116,8 +116,3 @@
 - zatím nevím jaký modul bude použit pro vykreslování sloupců
 - zatím nevím jaký modul bude použit pro animaci sloupců
 - zatím nevím jaký modul bude použit pro generování datasetu
-
-
-
-
-
