@@ -8,8 +8,14 @@ namespace AsyncFillPrimeArray
     {
         static void Main(string[] args)
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
             Console.Write("10-14 mil range: ");
             FillArayWithPrimes(1000000, 1400000);
+            watch.Stop();
+            Console.WriteLine(watch.ElapsedMilliseconds);
+
+
             Console.WriteLine("faster?");
             RunFour();
 
@@ -18,22 +24,18 @@ namespace AsyncFillPrimeArray
 
         public async static void RunFour()
         {
-            await Task.Run(() =>
-            {
-                return FillArayWithPrimes(1000000, 1100000);
-            });
-            await Task.Run(() =>
-            {
-                return FillArayWithPrimes(1100000, 1200000);
-            });
-            await Task.Run(() =>
-            {
-                return FillArayWithPrimes(1200000, 1300000);
-            });
-            await Task.Run(() =>
-            {
-                return FillArayWithPrimes(1300000, 1400000);
-            });
+            Task t1 = Task.Run(() => FillArayWithPrimes(1000000, 1100000));
+            Task t2 = Task.Run(() => FillArayWithPrimes(1100000, 1200000));
+            Task t3 = Task.Run(() => FillArayWithPrimes(1200000, 1300000));
+            Task t4 = Task.Run(() => FillArayWithPrimes(1300000, 1400000));
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
+
+            await Task.WhenAll(t1, t2, t3, t4);
+            watch.Stop();
+            Console.WriteLine(watch.ElapsedMilliseconds);
+
         }
 
         public static bool IsPrime(int number)
@@ -53,8 +55,7 @@ namespace AsyncFillPrimeArray
 
         public static List<int> FillArayWithPrimes(int lowerRange, int upperRange)
         {
-            var watch = new System.Diagnostics.Stopwatch();
-            watch.Start();
+
             List<int> primeArr = new List<int>();
 
             for (int i = lowerRange; i < upperRange; i++)
@@ -64,8 +65,6 @@ namespace AsyncFillPrimeArray
                     primeArr.Add(i);
                 }
             }
-            watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds);
             return primeArr;
         }
     }
