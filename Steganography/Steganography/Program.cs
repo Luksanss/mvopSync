@@ -13,7 +13,7 @@ class Program
 
         Bitmap newImage = null;
 
-        string text = "ahoj stenografie";
+        string text = "adam je debil";
         int n = 0;
         int j = 0;
         int i = 0;
