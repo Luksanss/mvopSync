@@ -6,6 +6,8 @@ class Program
 {
     public static void Main(string[] args)
     {
+        Console.WriteLine(10 / 3);
+
         string userMail = "papariga.lu.2020@ssps.cz";
 
         Console.WriteLine(IsMail(userMail));
