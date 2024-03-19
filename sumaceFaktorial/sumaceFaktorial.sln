@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sumaceFaktorial", "sumaceFaktorial\sumaceFaktorial.csproj", "{5C577CF0-6FB8-48A2-9658-01FDABE42A56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C577CF0-6FB8-48A2-9658-01FDABE42A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C577CF0-6FB8-48A2-9658-01FDABE42A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C577CF0-6FB8-48A2-9658-01FDABE42A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C577CF0-6FB8-48A2-9658-01FDABE42A56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E90C7351-FE82-4F47-AC7B-C3D7FEE29A69}
+	EndGlobalSection
+EndGlobal
