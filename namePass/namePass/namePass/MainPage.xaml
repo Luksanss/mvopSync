@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:namepass="clr-namespace:namePass"
+             x:DataType="namepass:MainPageViewModel"
+             x:Class="namePass.MainPage">
+
+    <StackLayout>
+        <Label FontSize="24" FontAttributes="Bold">Jméno</Label>
+        <Entry x:Name="loginName" ></Entry>
+        <Label FontSize="24" FontAttributes="Bold">Heslo</Label>
+        <Entry x:Name="passOne" IsPassword="True" MaxLength="18"></Entry>
+        <Label FontSize="24" FontAttributes="Bold">Heslo verifikace</Label>
+        <Entry x:Name="passTwo" IsPassword="True" MaxLength="18"></Entry>
+        <Grid
+            Padding="20"
+            ColumnDefinitions="Auto"
+            RowDefinitions="Auto,Auto">
+
+            <Label IsVisible="{Binding LoginStatusVisible}" Grid.Column="0" Grid.Row="0" Text="{Binding StatusLabelText}"></Label>
+            <Button Grid.Column="0" Grid.Row="1" Clicked="ButtonSend_Clicked" Text="Send"></Button>
+        </Grid>
+        
+    </StackLayout>
+
+</ContentPage>
